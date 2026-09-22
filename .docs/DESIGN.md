@@ -39,3 +39,26 @@ Third-party plugin submissions still point `repo` at the contributor's own repos
 
 - **Atomic commits.** Plan work lands as one commit per step, not one bundled commit for the whole plan.
 - **Shift-left testing / TDD.** Write the failing test for a step before the code that makes it pass; tests land in the same commit as the code they cover, not a later cleanup step.
+
+## Testing plugin logic
+
+Plugin QML can't be unit tested without a running DMS/Quickshell instance, so pure logic (parsing, formatting, anything that doesn't touch Qt/QML APIs) lives in plain `.js` files under each plugin's `lib/`, written to load both ways:
+
+- From QML, via `import "./lib/<name>.js" as X` (QML's script-file loading — no bundler, no `module` global).
+- From Node, via `require("./<name>.js")`, for the actual unit tests.
+
+A file supporting both ends with a guarded export:
+
+```js
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = { someFunction };
+}
+```
+
+Run all plugin unit tests with:
+
+```bash
+node --test plugins-src
+```
+
+No test framework dependency — Node's built-in `node:test` + `node:assert` is enough for pure-function tests. QML-side wiring (the singleton service that actually shells out, the widget UI) is verified manually in DMS; see `container-wrangler-001-first-slice.md` for an example of this split.
