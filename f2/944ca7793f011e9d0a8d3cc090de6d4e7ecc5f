@@ -1,0 +1,19 @@
+.gitignore
+  s_da1f93001ebc2a::t_653f3ba0503c52 1-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f2944ca7793f011e9d0a8d3cc090de6d4e7ecc5f",
+  "prompts": {},
+  "sessions": {
+    "s_da1f93001ebc2a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a1feeea-93d7-4cc7-b1c7-c86f7896f67e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
