@@ -1,0 +1,19 @@
+.plans/TEMPLATE.md
+  s_da1f93001ebc2a::t_88fa4b561fcaf9 27-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7538bb09bca7bccc8ecf40f6fcb6e3933398edd4",
+  "prompts": {},
+  "sessions": {
+    "s_da1f93001ebc2a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a1feeea-93d7-4cc7-b1c7-c86f7896f67e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
