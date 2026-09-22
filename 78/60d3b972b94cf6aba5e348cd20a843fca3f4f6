@@ -1,0 +1,20 @@
+CONTRIBUTING.md
+  s_da1f93001ebc2a::t_10b2fad7ccf7fb 32-34
+  s_da1f93001ebc2a::t_d436457d461b8b 55-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7860d3b972b94cf6aba5e348cd20a843fca3f4f6",
+  "prompts": {},
+  "sessions": {
+    "s_da1f93001ebc2a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a1feeea-93d7-4cc7-b1c7-c86f7896f67e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
