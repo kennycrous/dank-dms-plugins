@@ -1,0 +1,21 @@
+.docs/DESIGN.md
+  s_da1f93001ebc2a::t_682edfb1e4125d 10-14
+.plans/TEMPLATE.md
+  s_da1f93001ebc2a::t_055bb353d9294e 27-30,33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ce5bfddd551652b8a52b8fe4c14a2868081980cc",
+  "prompts": {},
+  "sessions": {
+    "s_da1f93001ebc2a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a1feeea-93d7-4cc7-b1c7-c86f7896f67e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
