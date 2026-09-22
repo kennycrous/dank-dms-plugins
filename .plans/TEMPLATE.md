@@ -1,4 +1,6 @@
-# <Plugin Name>
+<!-- Copy to .plans/<feature-slug>-<NNN>-<slice-slug>.md, e.g. .plans/container-wrangler-001-first-slice.md -->
+
+# <Plugin Name> — <Slice Name>
 
 **Status:** idea | in-progress | submitted
 

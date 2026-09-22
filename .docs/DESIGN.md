@@ -6,7 +6,7 @@ Notes on how this registry is structured and why, and conventions for plugins bu
 
 - `plugins/` — one JSON file per plugin (registry metadata), per the schema in [CONTRIBUTING.md](../CONTRIBUTING.md).
 - `plugins-src/` — this is a monorepo: plugin source code lives here, one folder per plugin (see below).
-- `.plans/` — one planning doc per plugin/story, from idea to submission.
+- `.plans/` — planning docs. A feature accumulates one file per slice as it's iterated on, named `<feature-slug>-<NNN>-<slice-slug>.md` (e.g. `container-wrangler-001-first-slice.md`) — kebab-case, 3-digit zero-padded sequence number per feature, short slug for what that slice covers.
 - `.docs/` — this folder; cross-cutting docs that aren't tied to a single plugin.
 
 ## Monorepo: self-authored plugins
