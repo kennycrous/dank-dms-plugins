@@ -1,0 +1,23 @@
+.docs/FUTURE_FEATURES.md
+  s_da1f93001ebc2a::t_33d419e63744dd 1-5
+.plans/TEMPLATE.md
+  s_da1f93001ebc2a::t_bf21d8f0aafd34 1-29
+.docs/DESIGN.md
+  s_da1f93001ebc2a::t_71d90563aafdb8 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "35950ec7aedd337bfe708a655c0d44677d009e26",
+  "prompts": {},
+  "sessions": {
+    "s_da1f93001ebc2a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a1feeea-93d7-4cc7-b1c7-c86f7896f67e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
