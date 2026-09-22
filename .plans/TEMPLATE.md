@@ -24,6 +24,13 @@ What the plugin does and why it's useful.
 }
 ```
 
+## Commits
+
+Break the work into atomic commits, one per step. Check off as each lands:
+
+- [ ]
+- [ ]
+
 ## Open questions / TODOs
 
 -
