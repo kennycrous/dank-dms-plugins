@@ -29,7 +29,9 @@ Thank you for contributing to this Dank Material Shell plugin registry!
     "dependencies": ["dependency1", "dependency2"],
     "compositors": ["niri", "hyprland"],
     "distro": ["any"],
-    "screenshot": "https://url/to/screenshot.png"
+    "screenshot": "https://url/to/screenshot.png",
+    "requires_dms": "optional minimum DMS version, e.g. >=1.2.0",
+    "featured": false
 }
 ```
 
@@ -50,6 +52,8 @@ Thank you for contributing to this Dank Material Shell plugin registry!
 - **compositors** (required): Supported Wayland compositors, e.g. `["niri", "hyprland"]` or `["any"]`
 - **distro** (required): Supported distributions, e.g. `["any"]`, `["arch"]`
 - **screenshot** (required): Direct URL to a screenshot showing your plugin in use
+- **requires_dms** (optional): Minimum DMS version constraint, e.g. `>=1.2.0`
+- **featured** (optional): Boolean, defaults to `false`
 
 4. **Submit a Pull Request**
    - Commit your JSON file
