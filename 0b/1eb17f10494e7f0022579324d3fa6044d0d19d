@@ -1,0 +1,30 @@
+plugins-src/containerWrangler/lib/colimaStatus.test.js
+  s_da1f93001ebc2a::t_8f41124c392683 1-41
+plugins-src/containerWrangler/lib/colimaStatus.js
+  s_da1f93001ebc2a::t_853f2bdd58a881 1-44
+plugins-src/containerWrangler/qmldir
+  s_da1f93001ebc2a::t_0a2a0aa15e6ee0 1
+.docs/DESIGN.md
+  s_da1f93001ebc2a::t_27d2f71e6dd1c7 42-60,62-64
+  s_da1f93001ebc2a::t_8a2a0c261a460f 61
+plugins-src/containerWrangler/ContainerWranglerService.qml
+  s_da1f93001ebc2a::t_14f4b67037d34e 1-30
+.plans/container-wrangler-001-first-slice.md
+  s_da1f93001ebc2a::t_94539ebb5e3c90 54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0b1eb17f10494e7f0022579324d3fa6044d0d19d",
+  "prompts": {},
+  "sessions": {
+    "s_da1f93001ebc2a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a1feeea-93d7-4cc7-b1c7-c86f7896f67e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
