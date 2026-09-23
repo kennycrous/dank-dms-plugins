@@ -1,0 +1,21 @@
+.plans/container-wrangler-001-first-slice.md
+  s_da1f93001ebc2a::t_fe0561f6321789 55
+plugins-src/containerWrangler/ContainerWranglerWidget.qml
+  s_da1f93001ebc2a::t_eb1cd6208b5af0 9-26,44-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ee8efc3cc7a67dfe134ba9d7f8fa7dee9bea60fa",
+  "prompts": {},
+  "sessions": {
+    "s_da1f93001ebc2a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a1feeea-93d7-4cc7-b1c7-c86f7896f67e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
