@@ -52,7 +52,7 @@ Break the work into atomic commits, one per step, tests included. Check off as e
 
 - [x] `plugin.json` scaffold + minimal static-icon `ContainerWranglerWidget.qml` for `containerWrangler` in `plugins-src/` (no Colima logic, no popout yet). `qmldir` deferred — [DMS's documented plugin structure](https://github.com/AvengeMedia/DankMaterialShell/blob/master/quickshell/PLUGINS/README.md) doesn't require one, and there's no singleton service yet to register; adding it alongside `ContainerWranglerService.qml` in the next commit instead of as an empty placeholder now.
 - [x] Colima status detection (parses `colima status` output) + unit tests for running/not-running/not-installed cases. Uses `colima status --json` (structured, not log scraping); "not-installed" is inferred from Proc's timeout exit code 124, not a real colima error — see comment in `lib/colimaStatus.js`.
-- [ ] "Colima not running" empty state in the popout
+- [x] "Colima not running" empty state in the popout. Widget now shows a state-specific message for all of `ContainerWranglerService.state`'s values (not just not-running) — free given the service already exposes them; "running" gets a placeholder until the real list lands.
 - [ ] Container listing (parses container name/status/image from the Colima-backed docker socket) + unit tests for empty/populated output
 - [ ] Popout list UI rendering parsed containers
 - [ ] Auto-refresh timer while popout is open
