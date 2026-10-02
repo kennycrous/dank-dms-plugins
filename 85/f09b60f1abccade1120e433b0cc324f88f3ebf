@@ -1,0 +1,28 @@
+plugins-src/containerWrangler/lib/dockerEngines.js
+  s_18accea04f2045::t_c2dfd25b0ded7f 1-54
+plugins-src/containerWrangler/ContainerWranglerService.qml
+  s_18accea04f2045::t_0302e838d98970 8,15,18-24,27-42,45-57,59-72,75,77-78,82,87,89,94-100
+  s_18accea04f2045::t_210f3876e0179d 101-106
+plugins-src/containerWrangler/lib/dockerEngines.test.js
+  s_18accea04f2045::t_93a535ecc49dfb 1-75
+.plans/container-wrangler-001-first-slice.md
+  s_18accea04f2045::t_dd91c2f0efbf5f 61
+plugins-src/containerWrangler/ContainerWranglerWidget.qml
+  s_18accea04f2045::t_68bdc83a2f532d 20-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "85f09b60f1abccade1120e433b0cc324f88f3ebf",
+  "prompts": {},
+  "sessions": {
+    "s_18accea04f2045": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f523eb5-59f3-474b-a3da-3c8f13c17d85",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
