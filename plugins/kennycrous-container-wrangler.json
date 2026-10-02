@@ -10,5 +10,5 @@
     "dependencies": [],
     "compositors": ["any"],
     "distro": ["any"],
-    "screenshot": ""
+    "screenshot": "https://raw.githubusercontent.com/kennycrous/dank-dms-plugins/main/plugins-src/containerWrangler/screenshot.png"
 }

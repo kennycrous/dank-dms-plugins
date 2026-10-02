@@ -2,6 +2,8 @@
 
 See your Docker containers from the DankBar, without opening a terminal. Click the bar icon to open a popout listing every container, running or stopped, with its image and status.
 
+![Container Wrangler popout listing running, restarting and stopped containers](screenshot.png)
+
 **v1 is visibility only.** There are no start/stop/restart actions, logs, exec, or Compose view yet.
 
 ## Requirements
