@@ -21,6 +21,9 @@ PluginComponent {
     readonly property real headerRowHeight: 28
     readonly property real listSpacing: Theme.spacingS
     readonly property real popoutHeaderHeight: 40
+    // Padding PluginPopout puts around the content; same allowance
+    // dockerManager makes (Theme.spacingXL) so the last row isn't clipped.
+    readonly property real popoutChromeHeight: Theme.spacingXL
     readonly property real maxPopoutHeight: 480
     readonly property real emptyPopoutHeight: 180
 
@@ -101,7 +104,7 @@ PluginComponent {
 
             Item {
                 width: parent.width
-                height: root.popoutHeight - popout.headerHeight
+                height: root.popoutHeight - popout.headerHeight - root.popoutChromeHeight
 
                 DankListView {
                     id: list
@@ -109,7 +112,6 @@ PluginComponent {
                     visible: root.rows.length > 0
                     leftMargin: Theme.spacingS
                     rightMargin: Theme.spacingS
-                    bottomMargin: Theme.spacingS
                     spacing: root.listSpacing
                     clip: true
                     model: root.rows
@@ -231,5 +233,5 @@ PluginComponent {
     }
 
     popoutWidth: 360
-    popoutHeight: rows.length === 0 ? emptyPopoutHeight : Math.min(maxPopoutHeight, popoutHeaderHeight + listContentHeight + Theme.spacingS)
+    popoutHeight: rows.length === 0 ? emptyPopoutHeight : Math.min(maxPopoutHeight, popoutHeaderHeight + popoutChromeHeight + listContentHeight)
 }
