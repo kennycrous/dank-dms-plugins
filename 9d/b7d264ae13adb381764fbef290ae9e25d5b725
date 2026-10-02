@@ -1,0 +1,21 @@
+.plans/container-wrangler-001-first-slice.md
+  s_18accea04f2045::t_7f8c385369fb8b 67
+plugins-src/containerWrangler/README.md
+  s_18accea04f2045::t_7f8c385369fb8b 1-71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9db7d264ae13adb381764fbef290ae9e25d5b725",
+  "prompts": {},
+  "sessions": {
+    "s_18accea04f2045": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f523eb5-59f3-474b-a3da-3c8f13c17d85",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
