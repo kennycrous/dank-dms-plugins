@@ -69,4 +69,5 @@ Break the work into atomic commits, one per step, tests included. Check off as e
 ## Open questions / TODOs
 
 - Screenshot — needs a real one once v1 UI exists
-- Backlog (post-v1, not yet scoped): bar-badge running count, start/stop/restart actions, named Colima profiles, logs/exec, Compose view — pull into their own `.plans/` entries or `.docs/FUTURE_FEATURES.md` as they're prioritized, not into this plan
+- Bar-badge running count is planned in [container-wrangler-002-running-badge.md](container-wrangler-002-running-badge.md)
+- Backlog (post-v1, not yet scoped): start/stop/restart actions, named Colima profiles, logs/exec, Compose view — pull into their own `.plans/` entries or `.docs/FUTURE_FEATURES.md` as they're prioritized, not into this plan
