@@ -23,8 +23,13 @@ Item {
 
     // Colima is only consulted to learn its socket path; a stopped or missing
     // colima just means falling through to DOCKER_HOST / the default socket.
+    //
+    // The `command -v` guard is deliberate: Quickshell never reports exit for
+    // a binary that fails to start, so running a missing `colima` directly
+    // would sit out Proc's 10s timeout. With the guard it exits 1 at once.
     function refresh() {
-        Proc.runCommand(`${pluginId}.status`, ["colima", "status", "--json"], (stdout, exitCode) => {
+        const probe = "command -v colima >/dev/null 2>&1 && exec colima status --json";
+        Proc.runCommand(`${pluginId}.status`, ["sh", "-c", probe], (stdout, exitCode) => {
             const colima = ColimaStatus.parseColimaStatus({ exitCode, stdout });
             const resolved = DockerSocket.resolveDockerSocket({
                 colima,

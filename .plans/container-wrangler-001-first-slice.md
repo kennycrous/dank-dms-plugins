@@ -67,7 +67,6 @@ Break the work into atomic commits, one per step, tests included. Check off as e
 ## Open questions / TODOs
 
 - Show stopped/restarting containers too (`docker ps -a`)? Plain `docker ps` hides them, and the dev machine's only containers are `exited`/`restarting`. The parser already captures `state`, so this is mostly a UI/ordering decision — decide when the list UI lands
-- The missing-`colima` case currently costs a 10s Proc timeout before falling through (see `lib/colimaStatus.js`); check whether a faster probe is worth it once the fallback exists
 - Auto-refresh interval — TBD at implementation time
 - Screenshot — needs a real one once v1 UI exists
 - Backlog (post-v1, not yet scoped): bar-badge running count, start/stop/restart actions, named Colima profiles, logs/exec, Compose view — pull into their own `.plans/` entries or `.docs/FUTURE_FEATURES.md` as they're prioritized, not into this plan
