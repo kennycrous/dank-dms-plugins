@@ -1,0 +1,14 @@
+{
+    "id": "containerWrangler",
+    "name": "Container Wrangler",
+    "capabilities": ["dankbar-widget"],
+    "category": "utilities",
+    "repo": "https://github.com/kennycrous/dank-dms-plugins",
+    "path": "plugins-src/containerWrangler",
+    "author": "kennycrous",
+    "description": "Docker container visibility for DankBar, with Colima support",
+    "dependencies": [],
+    "compositors": ["any"],
+    "distro": ["any"],
+    "screenshot": ""
+}
