@@ -62,12 +62,11 @@ Break the work into atomic commits, one per step, tests included. Check off as e
 - [x] Update `plugin.json` description to match the runtime-neutral scope (the draft schema above is already updated)
 - [x] Include stopped containers: `buildPsCommand` (tested) passes `-a`; entries carry `state`/`status` so the list UI can distinguish them.
 - [x] Popout list UI rendering parsed containers. Row model is pure and tested (`lib/containerRows.js`: sort running → restarting → stopped then by name; engine headers only when more than one engine is connected); the QML is verified manually only. Rows show a status dot, name, image and status text, with stopped containers dimmed; the popout sizes to content up to 480px then scrolls, and has empty/unreachable/error states.
-- [ ] Auto-refresh timer while popout is open
+- [x] Auto-refresh timer while popout is open: a 5s `Timer` in the popout content, gated on `parentPopout.shouldBeVisible` (content stays loaded after close, so instantiation isn't a reliable "open" signal) and refreshing immediately on open. Verified manually only.
 - [ ] Registry entry: `plugins/kennycrous-container-wrangler.json`
 - [ ] Plugin README (`plugins-src/containerWrangler/README.md`) documenting v1 scope and requirements
 
 ## Open questions / TODOs
 
-- Auto-refresh interval — TBD at implementation time
 - Screenshot — needs a real one once v1 UI exists
 - Backlog (post-v1, not yet scoped): bar-badge running count, start/stop/restart actions, named Colima profiles, logs/exec, Compose view — pull into their own `.plans/` entries or `.docs/FUTURE_FEATURES.md` as they're prioritized, not into this plan

@@ -26,6 +26,7 @@ PluginComponent {
     readonly property real popoutChromeHeight: Theme.spacingXL
     readonly property real maxPopoutHeight: 480
     readonly property real emptyPopoutHeight: 180
+    readonly property int refreshIntervalMs: 5000
 
     readonly property real listContentHeight: rows.reduce((h, r, i) => h + (r.type === "header" ? headerRowHeight : rowHeight) + (i > 0 ? listSpacing : 0), 0)
 
@@ -101,6 +102,18 @@ PluginComponent {
         PopoutComponent {
             id: popout
             headerText: "Container Wrangler"
+
+            // The popout's content stays loaded after it closes (for fast
+            // re-open), so being instantiated doesn't mean being open. PluginPopout
+            // hands content its popout as parentPopout; refresh only while that is
+            // actually showing. triggeredOnStart refreshes the moment it opens.
+            Timer {
+                interval: root.refreshIntervalMs
+                repeat: true
+                running: popout.parentPopout ? popout.parentPopout.shouldBeVisible : false
+                triggeredOnStart: true
+                onTriggered: ContainerWranglerService.refresh()
+            }
 
             Item {
                 width: parent.width
