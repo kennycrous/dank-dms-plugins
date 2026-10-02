@@ -172,11 +172,15 @@ PluginComponent {
                                 anchors.right: parent.right
                                 anchors.rightMargin: Theme.spacingM
                                 anchors.verticalCenter: parent.verticalCenter
-                                width: Math.min(implicitWidth, parent.width * 0.4)
+                                width: Math.min(implicitWidth, parent.width * 0.5)
                                 text: row.modelData.status || ""
                                 font.pixelSize: Theme.fontSizeSmall
                                 color: Theme.surfaceVariantText
                                 horizontalAlignment: Text.AlignRight
+                                // Without NoWrap, StyledText wraps onto a second line
+                                // and elide never kicks in.
+                                wrapMode: Text.NoWrap
+                                maximumLineCount: 1
                                 elide: Text.ElideRight
                             }
 
@@ -194,6 +198,8 @@ PluginComponent {
                                     font.pixelSize: Theme.fontSizeMedium
                                     font.weight: Font.Medium
                                     color: Theme.surfaceText
+                                    wrapMode: Text.NoWrap
+                                    maximumLineCount: 1
                                     elide: Text.ElideRight
                                 }
 
@@ -202,6 +208,8 @@ PluginComponent {
                                     text: row.modelData.image || ""
                                     font.pixelSize: Theme.fontSizeSmall
                                     color: Theme.surfaceVariantText
+                                    wrapMode: Text.NoWrap
+                                    maximumLineCount: 1
                                     elide: Text.ElideRight
                                 }
                             }
