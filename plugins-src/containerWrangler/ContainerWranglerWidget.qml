@@ -12,20 +12,18 @@ PluginComponent {
     Component.onCompleted: console.log(ContainerWranglerService.pluginId, "loaded.")
 
     // Real container data arrives in a later slice; for now every state
-    // that isn't "running" gets its own honest message, and "running"
+    // that isn't "connected" gets its own honest message, and "connected"
     // itself just confirms detection worked while the list is still TODO.
     function statusMessage() {
         switch (ContainerWranglerService.state) {
-        case "running":
-            return "Colima is running — container list coming soon";
-        case "not-running":
-            return "Colima is not running";
-        case "not-installed":
-            return "Colima is not installed";
+        case "connected":
+            return "Docker is reachable — container list coming soon";
+        case "unreachable":
+            return "Docker not reachable";
         case "error":
-            return ContainerWranglerService.errorMessage || "Couldn't check Colima status";
+            return ContainerWranglerService.errorMessage || "Couldn't read container list";
         default:
-            return "Checking Colima status…";
+            return "Checking Docker…";
         }
     }
 
