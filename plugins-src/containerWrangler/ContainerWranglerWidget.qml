@@ -172,7 +172,7 @@ PluginComponent {
                                 anchors.right: parent.right
                                 anchors.rightMargin: Theme.spacingM
                                 anchors.verticalCenter: parent.verticalCenter
-                                width: Math.min(implicitWidth, parent.width * 0.5)
+                                width: Math.min(implicitWidth, parent.width * 0.4)
                                 text: row.modelData.status || ""
                                 font.pixelSize: Theme.fontSizeSmall
                                 color: Theme.surfaceVariantText
@@ -253,6 +253,6 @@ PluginComponent {
         }
     }
 
-    popoutWidth: 360
+    popoutWidth: 400
     popoutHeight: rows.length === 0 ? emptyPopoutHeight : Math.min(maxPopoutHeight, popoutHeaderHeight + popoutChromeHeight + listContentHeight)
 }
