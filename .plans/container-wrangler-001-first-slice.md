@@ -12,9 +12,9 @@ Core motivation: quick container actions from the bar, without opening a termina
 
 ### v1 (thin slice) scope
 
-- Resolves which docker socket to query, in order: Colima's `docker_socket` (if `colima status --json` succeeds for the default profile), then `DOCKER_HOST`, then `/var/run/docker.sock`
-- No reachable socket → popout shows a clear "Docker not reachable" state (no start button yet)
-- Socket reachable → popout lists containers: name, status, image
+- Detects engines independently and in parallel: **Docker** (`DOCKER_HOST`, else `/var/run/docker.sock`) and **Colima** (default profile, via the `docker_socket` in `colima status --json`). Each engine has its own state and container list; one being missing, stopped or slow never blocks or hides another. An engine whose socket is the same as another's is shown once
+- Nothing reachable → popout shows a clear "Docker not reachable" state (no start button yet)
+- Popout lists containers per reachable engine: name, status, image
 - Auto-refreshes on a timer while the popout is open
 - No bar-badge count (icon only)
 - No start/stop/restart/pause, no logs/exec, no Compose view
@@ -46,7 +46,7 @@ Monorepo plugin — `repo` points at this registry repo itself, `path` at `plugi
 
 Follow shift-left testing / TDD: write the failing test for a step before writing the code that makes it pass. Each commit below should include its own tests, not defer them to a later step.
 
-- Colima status parsing, socket resolution and container-list parsing (whatever shells out to `colima status` / the docker CLI) are pure logic — cover with unit tests against captured sample output (running, not-running, empty list, multiple containers, each socket-resolution fallback).
+- Colima status parsing, socket resolution and container-list parsing (whatever shells out to `colima status` / the docker CLI) are pure logic — cover with unit tests against captured sample output (running, not-running, empty list, multiple containers, engine detection (single, both, deduped sockets, colima pending) and the overall-state summary across engines).
 - UI states (empty/not-running, populated list) are verified manually in DMS for v1; no QML test harness assumed yet.
 
 ## Commits
@@ -58,6 +58,7 @@ Break the work into atomic commits, one per step, tests included. Check off as e
 - [x] "Colima not running" empty state (to be replaced by "Docker not reachable" in the socket-resolution step) in the popout. Widget now shows a state-specific message for all of `ContainerWranglerService.state`'s values (not just not-running) — free given the service already exposes them; "running" gets a placeholder until the real list lands.
 - [x] Container listing (parses container name/status/image from the Colima-backed docker socket) + unit tests for empty/populated output. Socket question resolved: `docker -H <docker_socket> ps --format '{{json .}}'`, with the socket path taken from `colima status --json` — no env export or `docker context`. Service exposes `containers`; rendering is the next step.
 - [x] Docker socket resolution + tests (`lib/dockerSocket.js`): pure `resolveDockerSocket` taking Colima's status result, `DOCKER_HOST` and the default path (Colima socket → `DOCKER_HOST` → `/var/run/docker.sock`). Service uses it instead of requiring Colima to be running; a missing `colima` binary falls through to the next candidate instead of being a terminal state. Service states are now `unknown | connected | unreachable | error` (nonzero `docker ps` exit → `unreachable`, malformed output → `error`). `DOCKER_HOST` is passed straight to `-H` unparsed, tcp/ssh included.
+- [ ] Independent engine detection + tests (`lib/dockerEngines.js`, replaces `dockerSocket.js`): pure `resolveEngines` (Docker + Colima, deduped by socket, usable before the Colima probe has returned) and `summarizeEngines` (overall state: any connected → connected, else any unknown → unknown, else error, else unreachable). Service probes each engine's `docker ps` in parallel and stores results per engine in `engines`; the overall `state` is derived from them. Motivated by the single-socket design letting one unavailable engine hide the others.
 - [ ] Update `plugin.json` description to match the runtime-neutral scope (the draft schema above is already updated)
 - [ ] Popout list UI rendering parsed containers
 - [ ] Auto-refresh timer while popout is open
