@@ -1,6 +1,6 @@
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
-const { parseContainerList } = require("./containerList.js");
+const { parseContainerList, buildPsCommand } = require("./containerList.js");
 
 // `docker ps --format '{{json .}}'` prints one JSON object per line.
 const NGINX = JSON.stringify({
@@ -48,4 +48,10 @@ test("error: a line isn't valid JSON", () => {
     const result = parseContainerList({ exitCode: 0, stdout: `${NGINX}\nnot json\n` });
     assert.equal(result.ok, false);
     assert.ok(result.message);
+});
+
+test("command: lists all containers (-a), not just running, against the given socket", () => {
+    assert.deepEqual(buildPsCommand("unix:///var/run/docker.sock"), [
+        "docker", "-H", "unix:///var/run/docker.sock", "ps", "-a", "--format", "{{json .}}"
+    ]);
 });

@@ -14,7 +14,7 @@ Core motivation: quick container actions from the bar, without opening a termina
 
 - Detects engines independently and in parallel: **Docker** (`DOCKER_HOST`, else `/var/run/docker.sock`) and **Colima** (default profile, via the `docker_socket` in `colima status --json`). Each engine has its own state and container list; one being missing, stopped or slow never blocks or hides another. An engine whose socket is the same as another's is shown once
 - Nothing reachable → popout shows a clear "Docker not reachable" state (no start button yet)
-- Popout lists containers per reachable engine: name, status, image
+- Popout lists containers per reachable engine, running and stopped (`docker ps -a`): name, status, image
 - Auto-refreshes on a timer while the popout is open
 - No bar-badge count (icon only)
 - No start/stop/restart/pause, no logs/exec, no Compose view
@@ -60,6 +60,7 @@ Break the work into atomic commits, one per step, tests included. Check off as e
 - [x] Docker socket resolution + tests (`lib/dockerSocket.js`): pure `resolveDockerSocket` taking Colima's status result, `DOCKER_HOST` and the default path (Colima socket → `DOCKER_HOST` → `/var/run/docker.sock`). Service uses it instead of requiring Colima to be running; a missing `colima` binary falls through to the next candidate instead of being a terminal state. Service states are now `unknown | connected | unreachable | error` (nonzero `docker ps` exit → `unreachable`, malformed output → `error`). `DOCKER_HOST` is passed straight to `-H` unparsed, tcp/ssh included.
 - [x] Independent engine detection + tests (`lib/dockerEngines.js`, replaces `dockerSocket.js`): pure `resolveEngines` (Docker + Colima, deduped by socket, usable before the Colima probe has returned) and `summarizeEngines` (overall state: any connected → connected, else any unknown → unknown, else error, else unreachable). Service probes each engine's `docker ps` in parallel and stores results per engine in `engines`; the overall `state` is derived from them. Motivated by the single-socket design letting one unavailable engine hide the others.
 - [ ] Update `plugin.json` description to match the runtime-neutral scope (the draft schema above is already updated)
+- [x] Include stopped containers: `buildPsCommand` (tested) passes `-a`; entries carry `state`/`status` so the list UI can distinguish them.
 - [ ] Popout list UI rendering parsed containers
 - [ ] Auto-refresh timer while popout is open
 - [ ] Registry entry: `plugins/kennycrous-container-wrangler.json`
@@ -67,7 +68,6 @@ Break the work into atomic commits, one per step, tests included. Check off as e
 
 ## Open questions / TODOs
 
-- Show stopped/restarting containers too (`docker ps -a`)? Plain `docker ps` hides them, and the dev machine's only containers are `exited`/`restarting`. The parser already captures `state`, so this is mostly a UI/ordering decision — decide when the list UI lands
 - Auto-refresh interval — TBD at implementation time
 - Screenshot — needs a real one once v1 UI exists
 - Backlog (post-v1, not yet scoped): bar-badge running count, start/stop/restart actions, named Colima profiles, logs/exec, Compose view — pull into their own `.plans/` entries or `.docs/FUTURE_FEATURES.md` as they're prioritized, not into this plan

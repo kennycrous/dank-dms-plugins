@@ -75,7 +75,7 @@ Item {
     // Points docker at the engine's socket explicitly via -H, so no env var
     // export or `docker context` switch.
     function _probeEngine(engine) {
-        Proc.runCommand(`${pluginId}.containers.${engine.id}`, ["docker", "-H", engine.socket, "ps", "--format", "{{json .}}"], (stdout, exitCode) => {
+        Proc.runCommand(`${pluginId}.containers.${engine.id}`, ContainerList.buildPsCommand(engine.socket), (stdout, exitCode) => {
             // Nonzero covers a stopped daemon, a missing socket, permissions,
             // and (124) a missing docker binary — none distinguishable here.
             if (exitCode !== 0) {
