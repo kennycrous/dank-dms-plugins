@@ -1,0 +1,21 @@
+plugins-src/containerWrangler/ContainerWranglerWidget.qml
+  s_18accea04f2045::t_bed60ae8f358af 5,15-42,44-47,49-56,60-62,68-78,99,102,104-228,233-234
+.plans/container-wrangler-001-first-slice.md
+  s_18accea04f2045::t_424dc31256af7c 64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "108aefcfbeb611ff8560fcf7f96c7ba936099fa8",
+  "prompts": {},
+  "sessions": {
+    "s_18accea04f2045": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f523eb5-59f3-474b-a3da-3c8f13c17d85",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
