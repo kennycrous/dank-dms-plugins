@@ -1,0 +1,19 @@
+.plans/container-wrangler-001-first-slice.md
+  s_18accea04f2045::t_df24fa20d0ced8 7-9,15-17,21-22,35-36,49,58,60-61,69-71,74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "630c4a2b4551ca057e282589beab5d98c4f9d56c",
+  "prompts": {},
+  "sessions": {
+    "s_18accea04f2045": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f523eb5-59f3-474b-a3da-3c8f13c17d85",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
