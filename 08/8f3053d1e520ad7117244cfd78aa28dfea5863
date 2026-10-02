@@ -1,0 +1,21 @@
+.plans/container-wrangler-001-first-slice.md
+  s_18accea04f2045::t_552d650f0c4466 72-73
+.plans/container-wrangler-002-running-badge.md
+  s_18accea04f2045::t_29809b397c56b8 1-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "088f3053d1e520ad7117244cfd78aa28dfea5863",
+  "prompts": {},
+  "sessions": {
+    "s_18accea04f2045": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f523eb5-59f3-474b-a3da-3c8f13c17d85",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
