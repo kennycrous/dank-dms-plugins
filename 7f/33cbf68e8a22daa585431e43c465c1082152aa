@@ -1,0 +1,21 @@
+plugins-src/containerWrangler/lib/containerRows.js
+  s_18accea04f2045::t_ac836a60a3248c 1-65
+plugins-src/containerWrangler/lib/containerRows.test.js
+  s_18accea04f2045::t_ade8fb64e5972c 1-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7f33cbf68e8a22daa585431e43c465c1082152aa",
+  "prompts": {},
+  "sessions": {
+    "s_18accea04f2045": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f523eb5-59f3-474b-a3da-3c8f13c17d85",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
