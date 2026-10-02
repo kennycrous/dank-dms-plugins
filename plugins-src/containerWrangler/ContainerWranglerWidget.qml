@@ -17,7 +17,11 @@ PluginComponent {
     function statusMessage() {
         switch (ContainerWranglerService.state) {
         case "connected":
-            return "Docker is reachable — container list coming soon";
+            // Placeholder until the real list: one line per reachable engine.
+            return ContainerWranglerService.engines
+                .filter(e => e.state === "connected")
+                .map(e => `${e.label}: ${e.containers.length} containers`)
+                .join("\n");
         case "unreachable":
             return "Docker not reachable";
         case "error":
