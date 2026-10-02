@@ -6,6 +6,11 @@ import qs.Modules.Plugins
 PluginComponent {
     id: root
 
+    // Singletons are lazy-loaded in QML; without touching the service here
+    // it wouldn't be created (and wouldn't start its first status check)
+    // until the popout was first opened.
+    Component.onCompleted: console.log(ContainerWranglerService.pluginId, "loaded.")
+
     // Real container data arrives in a later slice; for now every state
     // that isn't "running" gets its own honest message, and "running"
     // itself just confirms detection worked while the list is still TODO.
