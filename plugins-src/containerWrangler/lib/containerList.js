@@ -4,9 +4,12 @@
 // Node.js (see containerList.test.js).
 
 // -a so stopped, exited and restarting containers show up too; each entry's
-// `state`/`status` says which is which.
-function buildPsCommand(socket) {
-    return ["docker", "-H", socket, "ps", "-a", "--format", "{{json .}}"];
+// `state`/`status` says which is which. No -H on purpose: the docker CLI
+// resolves the endpoint itself (DOCKER_HOST, DOCKER_CONTEXT, the current
+// context, then the default socket), which also keeps a context's TLS/ssh
+// settings that a bare -H would drop.
+function buildPsCommand() {
+    return ["docker", "ps", "-a", "--format", "{{json .}}"];
 }
 
 // Parses `docker ps --format '{{json .}}'` output: one JSON object per line

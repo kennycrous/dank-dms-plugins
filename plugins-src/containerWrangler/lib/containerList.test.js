@@ -50,8 +50,6 @@ test("error: a line isn't valid JSON", () => {
     assert.ok(result.message);
 });
 
-test("command: lists all containers (-a), not just running, against the given socket", () => {
-    assert.deepEqual(buildPsCommand("unix:///var/run/docker.sock"), [
-        "docker", "-H", "unix:///var/run/docker.sock", "ps", "-a", "--format", "{{json .}}"
-    ]);
+test("command: lists all containers (-a), not just running, and leaves endpoint resolution to the docker CLI", () => {
+    assert.deepEqual(buildPsCommand(), ["docker", "ps", "-a", "--format", "{{json .}}"]);
 });

@@ -12,13 +12,12 @@ PluginComponent {
     // until the popout was first opened.
     Component.onCompleted: console.log(ContainerWranglerService.pluginId, "loaded.")
 
-    // Flat, ordered rows (engine headers + containers) for the popout list.
-    readonly property var rows: ContainerRows.buildRows(ContainerWranglerService.engines)
+    // Ordered rows for the popout list.
+    readonly property var rows: ContainerRows.buildRows(ContainerWranglerService.containers)
 
     // Layout constants shared by the delegates and the popout height estimate
     // below, so the popout is sized to exactly what gets drawn.
     readonly property real rowHeight: 52
-    readonly property real headerRowHeight: 28
     readonly property real listSpacing: Theme.spacingS
     readonly property real popoutHeaderHeight: 40
     // Padding PluginPopout puts around the content; same allowance
@@ -28,7 +27,7 @@ PluginComponent {
     readonly property real emptyPopoutHeight: 180
     readonly property int refreshIntervalMs: 5000
 
-    readonly property real listContentHeight: rows.reduce((h, r, i) => h + (r.type === "header" ? headerRowHeight : rowHeight) + (i > 0 ? listSpacing : 0), 0)
+    readonly property real listContentHeight: rows.length * rowHeight + Math.max(0, rows.length - 1) * listSpacing
 
     function groupColor(group) {
         switch (group) {
@@ -42,7 +41,7 @@ PluginComponent {
     }
 
     // What to show instead of the list: still checking, nothing reachable, a
-    // parse error, or a reachable engine with no containers.
+    // parse error, or a reachable daemon with no containers.
     function emptyIcon() {
         switch (ContainerWranglerService.state) {
         case "unreachable":
@@ -132,24 +131,11 @@ PluginComponent {
                     delegate: Item {
                         id: row
                         required property var modelData
-                        readonly property bool isHeader: modelData.type === "header"
 
                         width: list.width - list.leftMargin - list.rightMargin
-                        height: isHeader ? root.headerRowHeight : root.rowHeight
-
-                        StyledText {
-                            visible: row.isHeader
-                            anchors.left: parent.left
-                            anchors.leftMargin: Theme.spacingS
-                            anchors.verticalCenter: parent.verticalCenter
-                            text: row.isHeader ? `${row.modelData.label} · ${row.modelData.count}` : ""
-                            font.pixelSize: Theme.fontSizeSmall
-                            font.weight: Font.Bold
-                            color: Theme.surfaceVariantText
-                        }
+                        height: root.rowHeight
 
                         StyledRect {
-                            visible: !row.isHeader
                             anchors.fill: parent
                             radius: Theme.cornerRadius
                             color: Theme.surfaceContainerHigh

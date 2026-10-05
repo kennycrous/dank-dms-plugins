@@ -36,13 +36,13 @@ If nothing is reachable it says so, instead of showing an empty list.
 
 ## Which Docker it talks to
 
-The plugin runs `docker -H <socket> ps -a` against `DOCKER_HOST` if it's set, otherwise `/var/run/docker.sock`. `DOCKER_HOST` is passed through as-is, so `tcp://` and `ssh://` endpoints work however the docker CLI handles them. The active `docker context` is ignored.
+The plugin runs plain `docker ps -a` and lets the docker CLI choose the endpoint, exactly as it does in a terminal: `DOCKER_HOST`, then `DOCKER_CONTEXT`, then the current `docker context`, then the default `/var/run/docker.sock`. That means the popout shows the same containers `docker ps -a` would, so rootless Docker, remote contexts and anything else the CLI reaches through a context or `DOCKER_HOST` should work too. Only the default local socket has been tested. If you switch contexts, the popout follows.
 
 If the daemon can't be reached (stopped, no socket, no permission, `docker` not installed) the popout says "Docker not reachable" instead of showing an empty list.
 
 ## Not supported yet
 
-- Other runtimes such as Colima or Podman, and Docker contexts (the socket comes from `DOCKER_HOST` or the default path)
+- Runtimes other than Docker aren't targeted or tested. Podman's Docker-compatible socket, Colima and similar may work through a context or `DOCKER_HOST`, but that's unverified
 - Any container actions, logs or exec
 - A running-container count on the bar icon (planned, see `.plans/container-wrangler-002-running-badge.md`)
 

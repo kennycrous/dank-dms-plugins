@@ -69,7 +69,7 @@ Break the work into atomic commits, one per step, tests included. Check off as e
 - [x] Registry entry: `plugins/kennycrous-container-wrangler.json` (`id`/`name`/`description` verified against `plugin.json`). `screenshot` points at the `main`-branch raw URL for `plugins-src/containerWrangler/screenshot.png`; it resolves once the branch is merged.
 - [x] Plugin README (`plugins-src/containerWrangler/README.md`) documenting v1 scope and requirements
 - [x] Drop Colima: remove `lib/colimaStatus.js` and its tests, the `colima` probe and `_colima` state in the service, the Colima engine and socket dedupe in `resolveEngines` (now just `{ dockerHost }`, tests updated first), and Colima from the README, widget hint text, `plugin.json` and registry descriptions
-- [ ] Let the docker CLI resolve the endpoint: `buildPsCommand()` takes no socket and drops `-H`; remove `lib/dockerEngines.js` and its tests (socket resolution, `summarizeEngines`); collapse the service to a single `state`/`errorMessage`/`containers`; `buildRows(containers)` becomes a flat list with no engine headers (tests rewritten first); README updated
+- [x] Let the docker CLI resolve the endpoint: `buildPsCommand()` takes no socket and drops `-H`; remove `lib/dockerEngines.js` and its tests (socket resolution, `summarizeEngines`); collapse the service to a single `state`/`errorMessage`/`containers`; `buildRows(containers)` becomes a flat list with no engine headers (tests rewritten first); README updated
 
 ## Open questions / TODOs
 
