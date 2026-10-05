@@ -29,7 +29,9 @@ Thank you for contributing to this Dank Material Shell plugin registry!
     "dependencies": ["dependency1", "dependency2"],
     "compositors": ["niri", "hyprland"],
     "distro": ["any"],
-    "screenshot": "https://url/to/screenshot.png"
+    "screenshot": "https://url/to/screenshot.png",
+    "requires_dms": "optional minimum DMS version, e.g. >=1.2.0",
+    "featured": false
 }
 ```
 
@@ -43,13 +45,15 @@ Thank you for contributing to this Dank Material Shell plugin registry!
 - **capabilities** (required): Array of capabilities, e.g. `["dankbar-widget"]`
 - **category** (required): One of: `monitoring`, `utilities`, `appearance`, `system`, etc.
 - **repo** (required): Full GitHub URL to your plugin repository
-- **path** (optional): Subdirectory path, if your plugin lives in a monorepo
+- **path** (optional): Subdirectory path, if your plugin lives in a monorepo. `repo` doesn't have to be a separate repository — it can point back at this registry repo itself, with `path` pointing at `plugins-src/<plugin-id>` (see [.docs/DESIGN.md](.docs/DESIGN.md))
 - **author** (required): Your name or GitHub username
 - **description** (required): Clear, concise description of the plugin's purpose
 - **dependencies** (required): Array of dependencies, use `[]` if none
 - **compositors** (required): Supported Wayland compositors, e.g. `["niri", "hyprland"]` or `["any"]`
 - **distro** (required): Supported distributions, e.g. `["any"]`, `["arch"]`
 - **screenshot** (required): Direct URL to a screenshot showing your plugin in use
+- **requires_dms** (optional): Minimum DMS version constraint, e.g. `>=1.2.0`
+- **featured** (optional): Boolean, defaults to `false`
 
 4. **Submit a Pull Request**
    - Commit your JSON file

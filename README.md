@@ -10,6 +10,16 @@ A plugin registry for [Dank Material Shell](https://github.com/AvengeMedia/DankM
 
 Themes are not supported here yet.
 
+## Using this registry
+
+DMS supports additional plugin registries alongside the official one. Add this repo with the `dms` CLI:
+
+```bash
+dms registry add dank-dms-plugins https://github.com/kennycrous/dank-dms-plugins.git
+```
+
+Then browse/install plugins as usual via the Settings UI or `dms plugins install {plugin-name}`. See `dms registry list` / `dms registry remove` to manage registries.
+
 ## Contributing
 
 Open a pull request adding your plugin's JSON file to `plugins/`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the schema and guidelines.

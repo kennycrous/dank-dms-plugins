@@ -1,0 +1,12 @@
+{
+    "id": "containerWrangler",
+    "name": "Container Wrangler",
+    "description": "Docker container visibility for DankBar",
+    "version": "0.1.0",
+    "author": "kennycrous",
+    "type": "widget",
+    "capabilities": ["dankbar-widget"],
+    "component": "./ContainerWranglerWidget.qml",
+    "icon": "deployed_code",
+    "permissions": ["process"]
+}
