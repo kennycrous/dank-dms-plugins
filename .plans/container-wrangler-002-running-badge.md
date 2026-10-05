@@ -38,7 +38,7 @@ Break the work into atomic commits, one per step, tests included. Check off as e
 
 ## Open questions / TODOs
 
-- Closed-popout interval — 15s is the starting guess; tune against actual cost (one `docker ps -a` per engine plus the `colima` probe per tick)
+- Closed-popout interval — 15s is the starting guess; tune against actual cost (one `docker ps -a` per tick)
 - Pause polling when the screen is locked or the session is idle? DMS reclaims popout content on lock/idle (see `_contentWarm` in `DankPopoutStandalone.qml`); the service might want the same
 - Badge styling in vertical bars, where horizontal space beside the icon is limited
 - Alternative to polling: stream `docker events` per engine and re-list only on start/stop/die. Cheaper and instant, but needs reconnect handling when a daemon restarts. Revisit if the poll cost or latency is a problem
