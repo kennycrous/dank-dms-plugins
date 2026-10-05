@@ -1,0 +1,35 @@
+plugins-src/containerWrangler/plugin.json
+  s_18accea04f2045::t_73cb4d6f188242 4
+plugins-src/containerWrangler/README.md
+  s_18accea04f2045::t_27e10c82b9b88f 37,39,41,45
+plugins/kennycrous-container-wrangler.json
+  s_18accea04f2045::t_73cb4d6f188242 9
+plugins-src/containerWrangler/lib/containerRows.test.js
+  s_18accea04f2045::t_1761a595ce928a 45,49,55,64,76
+plugins-src/containerWrangler/ContainerWranglerWidget.qml
+  s_18accea04f2045::t_73cb4d6f188242 75
+plugins-src/containerWrangler/lib/dockerEngines.js
+  s_18accea04f2045::t_73cb4d6f188242 7,10-14,16
+plugins-src/containerWrangler/lib/dockerEngines.test.js
+  s_18accea04f2045::t_1761a595ce928a 5-6,11-13,15,18-20,23-24
+plugins-src/containerWrangler/ContainerWranglerService.qml
+  s_18accea04f2045::t_73cb4d6f188242 23,25,29-34
+.plans/container-wrangler-001-first-slice.md
+  s_18accea04f2045::t_5244ebe6bad0d7 69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "88564493cdf1c71174863e2491b14449c26d8841",
+  "prompts": {},
+  "sessions": {
+    "s_18accea04f2045": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f523eb5-59f3-474b-a3da-3c8f13c17d85",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Kenny Crous <kennycrous@oulook.com>"
+    }
+  }
+}
