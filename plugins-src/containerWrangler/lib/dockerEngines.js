@@ -4,30 +4,16 @@
 // dockerEngines.test.js).
 //
 // Engines are independent: each gets its own socket, probe and state, so one
-// being missing, stopped or slow never hides another.
+// being unreachable or slow never hides another.
 const DEFAULT_SOCKET = "unix:///var/run/docker.sock";
 
-// `colima` is the parsed `colima status --json` result, or null while that
-// probe is still in flight — docker doesn't depend on it, so callers can
-// resolve once up front and again when colima reports. A stopped or missing
-// colima (or one with no docker socket, e.g. containerd) simply isn't an
-// engine. DOCKER_HOST is passed through as-is (tcp://, ssh:// etc. are
-// handled by the docker CLI's own -H parsing). If docker's socket is the same
-// as colima's it isn't listed twice; colima takes the entry.
-function resolveEngines({ colima, dockerHost }) {
-    const engines = [];
-
-    if (colima && colima.state === "running" && colima.dockerSocket) {
-        engines.push({ id: "colima", label: "Colima", socket: colima.dockerSocket });
-    }
-
+// Today that's a single Docker engine: DOCKER_HOST if set (passed through
+// as-is — tcp://, ssh:// etc. are handled by the docker CLI's own -H
+// parsing), else the default daemon socket. It's still a list so other
+// Docker-API-compatible runtimes can be added as further entries.
+function resolveEngines({ dockerHost }) {
     const host = (dockerHost || "").trim();
-    const dockerSocket = host !== "" ? host : DEFAULT_SOCKET;
-    if (!engines.some(e => e.socket === dockerSocket)) {
-        engines.push({ id: "docker", label: "Docker", socket: dockerSocket });
-    }
-
-    return engines;
+    return [{ id: "docker", label: "Docker", socket: host !== "" ? host : DEFAULT_SOCKET }];
 }
 
 // Overall state across engines, each with state

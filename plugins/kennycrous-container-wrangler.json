@@ -6,7 +6,7 @@
     "repo": "https://github.com/kennycrous/dank-dms-plugins",
     "path": "plugins-src/containerWrangler",
     "author": "kennycrous",
-    "description": "Docker container visibility for DankBar, with Colima support",
+    "description": "Docker container visibility for DankBar",
     "dependencies": [],
     "compositors": ["any"],
     "distro": ["any"],

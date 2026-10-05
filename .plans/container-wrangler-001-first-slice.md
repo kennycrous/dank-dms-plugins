@@ -66,7 +66,7 @@ Break the work into atomic commits, one per step, tests included. Check off as e
 - [x] Auto-refresh timer while popout is open: a 5s `Timer` in the popout content, gated on `parentPopout.shouldBeVisible` (content stays loaded after close, so instantiation isn't a reliable "open" signal) and refreshing immediately on open. Verified manually only.
 - [x] Registry entry: `plugins/kennycrous-container-wrangler.json` (`id`/`name`/`description` verified against `plugin.json`). `screenshot` points at the `main`-branch raw URL for `plugins-src/containerWrangler/screenshot.png`; it resolves once the branch is merged.
 - [x] Plugin README (`plugins-src/containerWrangler/README.md`) documenting v1 scope and requirements
-- [ ] Drop Colima: remove `lib/colimaStatus.js` and its tests, the `colima` probe and `_colima` state in the service, the Colima engine and socket dedupe in `resolveEngines` (now just `{ dockerHost }`, tests updated first), and Colima from the README, widget hint text, `plugin.json` and registry descriptions
+- [x] Drop Colima: remove `lib/colimaStatus.js` and its tests, the `colima` probe and `_colima` state in the service, the Colima engine and socket dedupe in `resolveEngines` (now just `{ dockerHost }`, tests updated first), and Colima from the README, widget hint text, `plugin.json` and registry descriptions
 
 ## Open questions / TODOs
 

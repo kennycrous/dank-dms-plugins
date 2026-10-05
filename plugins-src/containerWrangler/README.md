@@ -10,7 +10,6 @@ See your Docker containers from the DankBar, without opening a terminal. Click t
 
 - [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell)
 - The `docker` CLI on your `PATH`, and permission to talk to the daemon (usually membership of the `docker` group)
-- Optional: [`colima`](https://github.com/abiosoft/colima) on your `PATH`, if you use it
 
 ## Install
 
@@ -35,23 +34,15 @@ Containers are sorted running first, then restarting, then stopped, alphabetical
 
 If nothing is reachable it says so, instead of showing an empty list.
 
-## How engines are detected
+## Which Docker it talks to
 
-The plugin checks for container engines independently, in parallel, so one being missing, stopped or slow never hides another:
+The plugin runs `docker -H <socket> ps -a` against `DOCKER_HOST` if it's set, otherwise `/var/run/docker.sock`. `DOCKER_HOST` is passed through as-is, so `tcp://` and `ssh://` endpoints work however the docker CLI handles them. The active `docker context` is ignored.
 
-| Engine | Where its socket comes from |
-| --- | --- |
-| **Docker** | `DOCKER_HOST` if set, otherwise `unix:///var/run/docker.sock` |
-| **Colima** | The `docker_socket` reported by `colima status --json` (default profile), only when Colima is running |
-
-If both resolve to the same socket (for example `DOCKER_HOST` points at Colima's socket) it's listed once, as Colima. When more than one engine is connected, the list is split under a header per engine. With a single engine there are no headers.
-
-Colima being absent or stopped isn't an error, it just means there's no Colima engine. `DOCKER_HOST` is passed to `docker -H` as-is, so `tcp://` and `ssh://` endpoints work however the docker CLI handles them.
+If the daemon can't be reached (stopped, no socket, no permission, `docker` not installed) the popout says "Docker not reachable" instead of showing an empty list.
 
 ## Not supported yet
 
-- Named Colima profiles (the default profile only)
-- Docker contexts other than the default
+- Other runtimes such as Colima or Podman, and Docker contexts (the socket comes from `DOCKER_HOST` or the default path)
 - Any container actions, logs or exec
 - A running-container count on the bar icon (planned, see `.plans/container-wrangler-002-running-badge.md`)
 

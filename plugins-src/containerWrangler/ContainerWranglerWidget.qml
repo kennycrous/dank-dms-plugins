@@ -72,7 +72,7 @@ PluginComponent {
     function emptyDetail() {
         switch (ContainerWranglerService.state) {
         case "unreachable":
-            return "Is the Docker daemon (or Colima) running?";
+            return "Is the Docker daemon running?";
         case "error":
             return ContainerWranglerService.errorMessage;
         default:

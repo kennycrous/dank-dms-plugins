@@ -42,17 +42,17 @@ test("container rows carry what the delegate renders, plus a unique key", () => 
 
 test("multiple connected engines: a header per engine with its container count", () => {
     const rows = buildRows([
-        engine("colima", [c("a", "running")]),
+        engine("other", [c("a", "running")]),
         engine("docker", [c("b", "running"), c("c", "exited")])
     ]);
     assert.deepEqual(rows.map(r => r.type), ["header", "container", "header", "container", "container"]);
-    assert.deepEqual(rows[0], { type: "header", key: "header:colima", label: "COLIMA", count: 1 });
+    assert.deepEqual(rows[0], { type: "header", key: "header:other", label: "OTHER", count: 1 });
     assert.equal(rows[2].count, 2);
 });
 
 test("same container id on two engines still gets distinct keys", () => {
     const rows = buildRows([
-        engine("colima", [c("a", "running", { id: "same" })]),
+        engine("other", [c("a", "running", { id: "same" })]),
         engine("docker", [c("a", "running", { id: "same" })])
     ]);
     const keys = rows.map(r => r.key);
@@ -61,7 +61,7 @@ test("same container id on two engines still gets distinct keys", () => {
 
 test("unreachable and unknown engines contribute nothing, and don't trigger headers", () => {
     const rows = buildRows([
-        engine("colima", [], "unreachable"),
+        engine("other", [], "unreachable"),
         engine("docker", [c("b", "running")]),
         engine("other", [], "unknown")
     ]);
@@ -73,7 +73,7 @@ test("connected engine with no containers: no rows (UI shows its own empty state
 });
 
 test("an empty engine still gets a header when several are connected", () => {
-    const rows = buildRows([engine("colima", []), engine("docker", [c("b", "running")])]);
+    const rows = buildRows([engine("other", []), engine("docker", [c("b", "running")])]);
     assert.deepEqual(rows.map(r => r.type), ["header", "header", "container"]);
 });
 

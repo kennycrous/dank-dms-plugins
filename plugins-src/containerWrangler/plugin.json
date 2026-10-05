@@ -1,7 +1,7 @@
 {
     "id": "containerWrangler",
     "name": "Container Wrangler",
-    "description": "Docker container visibility for DankBar, with Colima support",
+    "description": "Docker container visibility for DankBar",
     "version": "0.1.0",
     "author": "kennycrous",
     "type": "widget",
